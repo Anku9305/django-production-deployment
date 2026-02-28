@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block title %}Delete student | Django Student Management{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card border-danger shadow-sm">
+            <div class="card-body">
+                <h1 class="h4 mb-3 text-danger">Delete student</h1>
+                <p class="mb-4">
+                    Are you sure you want to delete
+                    <strong>{{ student.name }}</strong>
+                    ({{ student.email }})?
+                </p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'student_list' %}" class="btn btn-outline-secondary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-danger">
+                            Yes, delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
